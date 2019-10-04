@@ -1,6 +1,8 @@
 # Interview Preparation Guide
 
-This guide will cover cocepts every backed Java developer to brush up before facing interview
+This guide will cover concepts every backed Java developer should brush up before facing interview
+
+This guide targets developer with 3+ years of experience
 
 1. Core Java
 2. Advance Java
