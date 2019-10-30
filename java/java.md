@@ -17,3 +17,7 @@ Indicate to JVM that Thread should not cache value of this variable and always r
  “Program to an interface, not an implementation“, which leads to polymorphism
 
 **Reference** : https://javarevisited.blogspot.com/2011/06/volatile-keyword-java-example-tutorial.html
+
+- Program to an interface, not an implementation
+- encapsulate what varies
+- Open Close principle - Open for extension but close for modification
