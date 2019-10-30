@@ -216,5 +216,6 @@ https://springframework.guru/gang-of-four-design-patterns/adapter-pattern/
 - https://springframework.guru/gang-of-four-design-patterns/prototype-pattern/ 
 - https://www.geeksforgeeks.org/prototype-design-pattern/
 - https://www.journaldev.com/1440/prototype-design-pattern-in-java
+- https://github.com/in28minutes/interview-guide
 
 
