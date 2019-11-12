@@ -38,11 +38,27 @@ The DispatcherServlet, as any Servlet, **needs to be declared and mapped accordi
 
 **Note:** postHandle is less useful with @ResponseBody and ResponseEntity methods for which the response is written and committed within the HandlerAdapter and before postHandle. In that case use **ResponseBodyAdvice**
 
+```
+@Configuration
+@EnableWebMvc
+public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LocaleChangeInterceptor());
+        registry.addInterceptor(new ThemeChangeInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(new SecurityInterceptor()).addPathPatterns("/secure/*");
+    }
+}
+```
+
 ### Exceptions - HandlerExceptionResolver
 
 If an exception occurs during request mapping or is thrown from a request handler (such as a @Controller), the DispatcherServlet delegates to a chain of HandlerExceptionResolver
 
 ### ViewResolver
+
+View technologies in Spring MVC is pluggable, whether you decide to use Thymeleaf, Groovy Markup Templates, JSPs, or other technologies
 
 Let you render models in a browser without tying you to a specific view technology. ViewResolver provides a mapping between view names and actual views
 
@@ -216,7 +232,12 @@ public ResponseEntity<String> handle(IOException ex) {
 }
 ```
 
-Continue from https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-cors
+### HTTP Caching
+
+HTTP caching revolves around the **Cache-Control** response header and, subsequently, conditional request headers (such as Last-Modified and ETag)
+
+
+Most items taken from https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html
 
 
 
