@@ -1,29 +1,32 @@
-# CORS 
+# Same Origin Policy, JSONP, CORS
+
+**Disclaimer** : This md file is created from referring multiple sources. Hence I didn't claim the originality. This file is created with intent to help people understand concepts in simple words
+
 ## Same Origin Policy (SOP)
 
 According to Wikipedia
 
 > Under Same-origin policy (SOP), a web browser permits scripts contained in a first web page to access data in a second web page, but only if both web pages have the same origin
 
-SOP made sure, we can only make call to same origin from where the JS file is downloaded using **XMLHttpRequest** and **fetch**
+SOP made sure, we can only make call (**XMLHttpRequest** and **fetch** calls) to same origin from where the JS file is actually downloaded 
 
 ## Why Same Origin Policy is important
 
 Lets assume for a minute, there is no Same Origin Policy
 
-We are somehow tricked into visiting www.safehdfcbank.com. On that site, there is an iframe that loads www.hdfc.com, where you proceed to login legitimately.
+We are somehow tricked into visiting www.fakehdfcbank.com. On that site, there is an iframe that loads www.hdfc.com, where you proceed to login legitimately.
 
-After logging in, a simple JavaScript call from www.safehdfcbank.com could be used to access the DOM elements of www.hdfc.com loaded in the iframe, such as your account number, balance etc
+After logging in, a simple JavaScript call from www.fakehdfcbank.com could be used to access the DOM elements of www.hdfc.com loaded in the iframe, such as your account number, balance etc
 
-Same Origin Policy prevents us from above vulnerability
+Same Origin Policy prevents the above vulnerability
 
 ## When two URLs are considered same origin ?
 
-Origin = URI scheme(http or https) + host name + port number
+> Origin = URI scheme(http or https) + host name + port number
 
 Lets say our host is http://www.hdfc.com
 
-| URL from which we try to access 	| Accessible | Reason |
+| URL we try to access	| Accessible | Reason |
 | --- 								| ---------- | ------ |
 | http://www.hdfc.com/home 			|  Yes  | Protocol, host and port match |
 | http://www.hdfc.com/dir2/other.htm | Yes | Protocol, host and port match |
@@ -32,12 +35,17 @@ Lets say our host is http://www.hdfc.com
 | http://www.demo.hdfc.com | No | Host mismatch |
 | http://www2.hdfc.com | No | Host mismatch |
 
+## How to override Same Origin Policy
+
+* JSONP
+* CORS
 
 ## JSONP
 
 When a JS is downloaded from an origin, it can't make access content from another origin. But a webpage can load download using `<script src=""/>` JS from another origin & execute it
 
-This loophole is used as way to bypass the SOP. See the below example (taken from Wikipedia)
+
+This loophole is proposed as way to bypass the SOP. See the below example (taken from Wikipedia)
 
 Lets say call to http://example.com/Users/1234 will yield the following JSON
 
@@ -61,7 +69,8 @@ which will result in error as JS will consider the JSON as data block & hence wi
 
 Instead the call will be made to third party to return response like below
 
-<script src="http://example.com/Users/1234?callback=parseResponse"></script>
+`<script src="http://example.com/Users/1234?callback=parseResponse"></script>`
+
 
 Now the third party service has to respond with creating a JS file with below content
 
@@ -75,7 +84,11 @@ This method of bypassing SOP is called **JSONP** (JSON Padding)
 
 > Cross-origin resource sharing (CORS) is a mechanism that enables scripts running on a browser to interact with resources from a different origin
 
-CORS allow access other origin resource by adding **additional headers**. CORS specifies two types of request such as Simple Request & Preflight Request
+CORS allow access other origin resource by adding **additional headers**. 
+
+CORS specifies two types of request
+* Simple Request
+* Preflight Request (Not-so-simple-request)
 
 ### Simple Request
 
@@ -143,9 +156,7 @@ Here is the workflow of CORS (Image from Wikipedia)
 
 ![CORS Explained in one Image - Source: Wikipedia](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flowchart_showing_Simple_and_Preflight_XHR.svg/770px-Flowchart_showing_Simple_and_Preflight_XHR.svg.png)
 
-
-
-Reference:
+**Reference:**
 
 * https://www.html5rocks.com/en/tutorials/cors/
 
