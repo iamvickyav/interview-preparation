@@ -145,7 +145,17 @@ Here is the workflow of CORS (Image from Wikipedia)
 
 
 
+Reference:
 
+* https://www.html5rocks.com/en/tutorials/cors/
+
+* https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+
+* https://www.youtube.com/watch?v=stvCHJZq5MI
+
+* https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
+
+* https://en.wikipedia.org/wiki/JSONP
 
 
 
