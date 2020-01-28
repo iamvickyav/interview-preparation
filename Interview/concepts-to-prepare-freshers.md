@@ -63,13 +63,4 @@
 
 **Programs**
 
-1. Reverse a string
-2. Remove a character from String
-3. Count of each characters in a String
-4. First non repeated character
-5. Prime Number or not
-6. Swapping of numbers
-7. Check palindrome or not
-8. Sum of numbers in a List
-9. Sort elements in an Array or a collection
-10. Print till nth fibonacci number
+https://github.com/iamvickyav/preparation/blob/master/Interview/programs_for_freshers.md
