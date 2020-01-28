@@ -1,8 +1,8 @@
 # Java Interview preparation guide for Freshers
 
-[Concepts to Prepare for Fresher Interview](https://github.com/iamvickyav/preparation/blob/master/Interview/concepts-to-prepare-freshers.md)
+[List of Concepts to Prepare for Fresher Interview](https://github.com/iamvickyav/preparation/blob/master/Interview/concepts-to-prepare-freshers.md)
 
-[Java concepts last minute refresh guide](https://github.com/iamvickyav/preparation/blob/master/Interview/java-concepts.md)
+[Java concepts explained in simple words (last minute refresh guide)](https://github.com/iamvickyav/preparation/blob/master/Interview/java-concepts.md)
 
 [Programming Questions to practice before interview](https://github.com/iamvickyav/preparation/blob/master/Interview/programs_for_freshers.md)
 
