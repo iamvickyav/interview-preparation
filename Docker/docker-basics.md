@@ -3,7 +3,7 @@
 > Docker is a platform which packages an application and all its dependencies together in the form of containers
 
 
-## Step by Step Instruction to run Spring Boot War file in Tomcat running in Docker
+## Step by Step Instruction to deploy & run WAR file in Tomcat (running in Docker)
 
 ### Pull Tomcat Docker Image
 
