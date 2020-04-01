@@ -1,7 +1,12 @@
 # Docker 
 
-> Docker is a platform which packages an application and all its dependencies together in the form of containers
+- Docker is a platform which packages an application and all its dependencies together in the form of containers
 
+- Docker works like Client-Server model
+
+- Docker Daemon is the server in this case & it can be contacted through Docker CLI client (Command Line Interface)
+
+- Docker image is a template & Docker container is the running instance of the image. We can create any number of instance from single docker image
 
 ## Step by Step Instruction to deploy & run WAR file in Tomcat (running in Docker)
 
