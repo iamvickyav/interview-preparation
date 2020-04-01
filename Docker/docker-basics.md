@@ -38,11 +38,13 @@ tomcat              latest              4e7840b49fad        4 weeks ago         
 
 While starting Docker image, its important to bind ports. Ok What I mean by bind ports here. We all know Docker runs in its own environment. if we run Tomcat docker image, it will be running in 8080 port (default tomcat port) of docker container. But when we try to hit http://localhost:8080, we are hitting only 8080 port of our sytem's 8080 not the container's 8080 port
 
-Hence its necessary to bind the container 8080 port to our system's 8080 port
+Hence its necessary to bind the container 8080 port to our system's 8080 port using -p flag
 
 ```
 docker run -p 8080:8080 tomcat
 ```
+
+Actual syntax of port binding 
 
 ### Add war file to tomcat running in Docker container
 
