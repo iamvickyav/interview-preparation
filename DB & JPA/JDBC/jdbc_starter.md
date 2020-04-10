@@ -34,13 +34,13 @@ Methods - execute, executeQuery, executeUpdate
 
 Preferred If we have to execute a Statement object many times
 
-How it works differenly than Statement ? 
+**How it works differenly than Statement ?**
 
 PreparedStatement is given a SQL statement when it is created & sent to the DB where it is compiled. 
 
 As a result, the PreparedStatement object contains not just a SQL statement, but a SQL statement that has been precompiled. This means that when the PreparedStatement is executed, the DBMS can just run the PreparedStatement SQL statement without having to compile it first
 
-Advantages 
+**Advantages**
 
 * Precompilation and DB-side caching of the SQL statement
 * Prevention of SQL injection attacks by builtin escaping of quotes and other special characters
