@@ -20,6 +20,9 @@
     + Security Algorithms
     + [CORS](https://github.com/iamvickyav/preparation/blob/master/Security/CORS.md)
     + [Securing REST Endpoints](https://github.com/iamvickyav/preparation/blob/master/Security/Securing%20REST%20Endpoints.md)
+    + CSRF
+    + OAuth
+    + ClientId & ClientSecret Approach
   <br/>
 - **Tools**
   * Docker
