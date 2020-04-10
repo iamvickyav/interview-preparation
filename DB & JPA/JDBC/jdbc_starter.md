@@ -47,6 +47,10 @@ As a result, the PreparedStatement object contains not just a SQL statement, but
 
 Thumb Rule - Statement for DDL and PreparedStatment for DML
 
+Methods
+executeUpdate() for create, drop, insert, update, delete
+executeQuery() for the select query
+
 ### SQL Injection Sample
 
 **NOTE** If we don't use ? (question mark) PreparedStatement also is not safe from SQL Injection attacks
