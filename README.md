@@ -17,6 +17,7 @@
     + [HTTP Cache](https://github.com/iamvickyav/preparation/blob/master/Cache/http-cache.md)
     + [Redis basics](https://github.com/iamvickyav/preparation/blob/master/Cache/redis-basics.md)
   * Security
+    + Security Algorithms
     + [CORS](https://github.com/iamvickyav/preparation/blob/master/Security/CORS.md)
     + [Securing REST Endpoints](https://github.com/iamvickyav/preparation/blob/master/Security/Securing%20REST%20Endpoints.md)
   <br/>
@@ -27,3 +28,5 @@
     + [docker-compose.yaml basisc](https://github.com/iamvickyav/preparation/blob/master/Docker/docker-compose-basics.md)
   * Git
     + [Basic Git Commands](https://github.com/iamvickyav/preparation/blob/master/Git/git-basics.md)
+- **General Concepts**
+  * HTTP/2 
