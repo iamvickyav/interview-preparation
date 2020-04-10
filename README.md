@@ -4,7 +4,7 @@
   * [DesignPatterns](https://github.com/iamvickyav/preparation/tree/master/Java)
   * [Must read concepts for Fresher before Interview](https://github.com/iamvickyav/preparation/blob/master/Q%20%26%20A/concepts-to-prepare-freshers.md)
   <br/>
-- [Spring Framework]
+- Spring Framework
   * [Spring MVC](https://github.com/iamvickyav/preparation/blob/master/Spring%20%26%20Spring%20Boot/Spring%20MVC/spring-mvc.md)
   <br/>
 - [Database](https://github.com/iamvickyav/preparation/tree/master/DB%20%26%20JPA)
