@@ -49,6 +49,8 @@ Thumb Rule - Statement for DDL and PreparedStatment for DML
 
 ### SQL Injection Sample
 
+**NOTE** If we don't use ? (question mark) PreparedStatement also is not safe from SQL Injection attacks
+
 Statement
 ```
 PreparedStatement stmt = conn.createStatement("INSERT INTO students VALUES('" + user + "')");
