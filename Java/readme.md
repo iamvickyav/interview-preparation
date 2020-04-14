@@ -1,16 +1,16 @@
 # Java last minute Revision Guide
 
-- [OOP Concepts](#oop-concepts)
+  * [OOP concepts in Java](#oop-concepts-in-java)
   * [Class](#class)
   * [Object](#object)
   * [Encapsulation](#encapsulation)
   * [Abstraction](#abstraction)
   * [Polymorphism](#polymorphism)
-  * [Method Overloading &amp; Overriding in Java](#method-overloading--amp--overriding-in-java)
-    + [Overloading](#overloading)
-    + [Overriding](#overriding)
-  * [Rule for overriding](#rule-for-overriding)
-  * [Covariant return type](#covariant-return-type)
+    + [Method Overloading &amp; Overriding in Java](#method-overloading--amp--overriding-in-java)
+      - [Overloading](#overloading)
+      - [Overriding](#overriding)
+    + [Rule for overriding](#rule-for-overriding)
+    + [Covariant return type](#covariant-return-type)
 - [Java Bean/POJO](#java-bean-pojo)
 - [Constructor](#constructor)
 - [Abstract Class](#abstract-class)
@@ -56,6 +56,7 @@
     + [Map is not part of collection why?](#map-is-not-part-of-collection-why-)
   * [Collections class](#collections-class)
 
+## OOP concepts in Java
 ## Class
 
 Collection of similar properties of object. Class is user defined data type which contains properties and methods
@@ -88,9 +89,9 @@ Poly - Many Forms. Same name can be used for different operations
 
 Achieved using **Method Overloading &amp; Method Overriding**.
 
-## Method Overloading &amp; Overriding in Java
+### Method Overloading &amp; Overriding in Java
 
-### Overloading
+#### Overloading
 
 Methods have same names but different number or type or order of parameters. Overloading is determined at the compile time. It&#39;s otherwise called static or compile time polymorphism
 
@@ -104,13 +105,13 @@ display(int number, String name)
 
 Method won&#39;t be considered overloaded, if the return type is the only difference between two methods.
 
-### Overriding
+#### Overriding
 
 A child class implements the method with same signature as a method in a parent class.
 
 In method overriding both the super &amp; sub class have same method signature, compile doesn&#39;t figure out which method to call at compile-time. In this case, JVM decides which method to call at runtime that&#39;s why it&#39;s called dynamic polymorphism.
 
-## Rule for overriding
+### Rule for overriding
 
 | **Overridden Method (Super class method)** | **Overriding Method (Sub class method)** |
 | --- | --- |
@@ -120,7 +121,7 @@ In method overriding both the super &amp; sub class have same method signature, 
 | If private | can&#39;t be overridden |
 | If static | can&#39;t be overridden |
 
-## Covariant return type
+### Covariant return type
 
 Generally when we override a method, the signature has to be same for both methods. But there is a privilege to change the return type of the overriding method.
 
