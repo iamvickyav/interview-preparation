@@ -16,12 +16,16 @@ One has to follow allow below constraints to get declared as RESTful
 The communication happens through request-response pattern. Hence we need a protocol for communication to happen seemlessly.
     
 RESTful APIs should use HTTP (Stateless Protocol)
-    
+
+---
+
 #### Statelessness
 
 Each request has to be independent meaning client has to send information on every request to server
    
 Helps achieve scalability
+
+---
     
 #### Cacheable
 
@@ -32,24 +36,32 @@ Ability to store frequently accessed data
 **Controlling Cache Behaviour using headers** - Expires, Cache-Control, E-Tag, Last-modified
 
 **Advantages** - Reduced bandwidth, latency (response time), load on server
-    
+
+---
+
 #### Uniform interface
 
 URI + HTTP Methods
 
 URL is an URI
 
+---
+
 #### Layered systems
 
 A client should not know whether it is connected to the services directly with the server endpoint, or to an intermediary before reaching the actual server
 
-### Code on demand
+---
+
+#### Code on demand
 
 Server can send code to the clients to be executed on the client computer
 
 Only one optional constraint of REST
 
 **E.g.** Java Applets, Flash
+
+---
 
 ## In Depth
 
@@ -62,14 +74,18 @@ Only one optional constraint of REST
 - Use Hyphens but not Underscores in URI
 - Keep everything in lowercase in URI
 
+---
+
 ### Resource Archetypes
 
-- document, collection, store, and controller
+- Document, Collection, Store, and Controller
 
 #### Document
 Object instance or a database record
 
 Use singular nouns for document names
+
+---
 
 #### Collection
 Collection of resource
@@ -85,6 +101,7 @@ URI is decided by server
 ```
 E.g. https://finance.india.gov.in/gst-forms
 ```
+---
 
 #### Store
 Client-managed resource repository
@@ -98,11 +115,14 @@ Use plural nouns for stores
 ```
 E.g. https://www.youtube.com/playlist/illayara-songs
 ```
+---
 
 #### Controller
 To perform application-specific actions
 
 Use verb to represent action
+
+---
 
 ## Security
 
@@ -112,11 +132,15 @@ Restrictions imposed by the web browsers for JavaScript client
 
 Prevents JS Client from accessing resources if the JS & Resource are not from same domain
 
+---
+
 #### Resource Sharing
 If you want JS Client from other domains to access your endpoint, use either of below method
 
 - JSON with padding (JSONP)
 - CORS
+
+---
 
 ## Other topics to read
 
