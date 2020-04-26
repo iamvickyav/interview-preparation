@@ -1,27 +1,32 @@
-# Git Basics
+# Git Starter
 
 ### What is Git ?
 
-Git is open source distributed version control system
-
-### Installation for Git
-
-For Windows - https://gitforwindows.org/
+Git is an open source distributed version control system
 
 ### Git Basics
 
 # Git
-- What is Git
-- Git stages
-- Basic Git commands
-	- git commit
-	- git add
-	- git push
-	- git pull
-- Push to GitHub
-- Readme.md file
-- Gist
 
+### Initiate git in a project
+
+There are two ways to initialise git for a project. 
+
+- By running git init command in project base directory
+
+```
+> git init
+```
+
+- By cloning existing repo using git clone
+
+```
+> git clone https://github.com/iamvickyav/preparation.git
+```
+
+Once Git is initiated in the project, a hidden folder called **.git** gets created inside the project base directory
+
+### Stages of a file
 Untracked: the file exists, but is not part of git's version control
 Staged: the file has been added to git's version control but changes have not been committed
 Committed: the change has been committed
