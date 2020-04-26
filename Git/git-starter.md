@@ -26,6 +26,10 @@ Once Git is initiated in the project, a hidden folder called **.git** gets creat
 
 ---
 
+## Saving your changes in Git
+
+Saving your changes is nothing but doing a git commit
+
 ## Stages of a file
 Untracked: the file exists, but is not part of git's version control
 Staged: the file has been added to git's version control but changes have not been committed
