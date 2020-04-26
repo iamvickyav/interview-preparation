@@ -1,12 +1,14 @@
 # Git Starter
 
-### What is Git ?
+## What is Git ?
 
 Git is an open source distributed version control system
 
-### Initiate git for a project
+---
 
-There are two ways to initialise git for a project. 
+## Initiate git for a project
+
+There are two ways to initialise git for a project
 
 - By running git init command in project base directory
 
@@ -22,7 +24,9 @@ There are two ways to initialise git for a project.
 
 Once Git is initiated in the project, a hidden folder called **.git** gets created inside the project base directory
 
-### Stages of a file
+---
+
+## Stages of a file
 Untracked: the file exists, but is not part of git's version control
 Staged: the file has been added to git's version control but changes have not been committed
 Committed: the change has been committed
