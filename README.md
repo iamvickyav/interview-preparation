@@ -1,5 +1,9 @@
 # Interview Preparation Guide
 
+I used to prepare kind of notes on topics I read for future reference. I thought it would be useful for everyone who want to make a last minute revision before an interview. Hence created this repo
+
+Contents of this repo is either written by me or taken from some reference sites or forums. I mentioned links to the original articles if I copied it straight away
+
 - **Java**
   * [DesignPatterns](https://github.com/iamvickyav/preparation/tree/master/Java)
   * [Must read concepts for Fresher before Interview](https://github.com/iamvickyav/preparation/blob/master/Q%20%26%20A/concepts-to-prepare-freshers.md)
