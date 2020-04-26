@@ -4,7 +4,7 @@
 
 Git is an open source distributed version control system
 
-### Initiate git in a project
+### Initiate git for a project
 
 There are two ways to initialise git for a project. 
 
