@@ -38,6 +38,12 @@ Use the below command to build the docker image from a Dockerfile
 
 Use **docker images** command to check whether my-img got created successfully. 
 
+**RUN** executes command(s) in a new layer and creates a new image. E.g., it is often used for installing software packages
+**CMD** sets default command and/or parameters, which can be overwritten from command line when docker container runs
+**ENTRYPOINT** configures a container that will run as an executable
+
+**Reference**: https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
+
 Thats all folks !!
 
 
