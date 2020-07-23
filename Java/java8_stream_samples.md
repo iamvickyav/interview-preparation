@@ -28,13 +28,17 @@ Map<Integer, List<String>> list1 = employeeList.stream()
 
 Map<Integer, List<Integer>> list3 = employeeList.stream()
 .collect(Collectors.groupingBy(Employee::getGrade,
-                Collectors.mapping(Employee::getAge, Collectors.toList())));
+                Collectors.mapping(Employee::getAge,
+                Collectors.toList())));
 
 Map<Integer, Long> collect = employeeList.stream()
-.collect(Collectors.groupingBy(Employee::getGrade, Collectors.counting()));
+.collect(Collectors.groupingBy(Employee::getGrade,
+                Collectors.counting()));
 
 Map<Integer, Integer> collect2 = employeeList.stream()
-.collect(Collectors.groupingBy(Employee::getGrade, Collectors.collectingAndThen(Collectors.counting(), Long::intValue)));
+.collect(Collectors.groupingBy(Employee::getGrade,
+                Collectors.collectingAndThen(Collectors.counting(),
+                Long::intValue)));
 
 Map<Integer, List<Employee>> list2 = employeeList.stream()
 .collect(Collectors.groupingBy(Employee::getGrade));
