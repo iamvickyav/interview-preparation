@@ -22,25 +22,25 @@ employeeList.add(new Employee(2, "Mahesh", 30));
 
 ```java
 
-Map<Integer, List<String>> list1 = employeeList.stream()
+Map<Integer, List<Employee>> employeeGradeMap = employeeList.stream()
+    .collect(Collectors.groupingBy(Employee::getGrade));
+
+Map<Integer, List<String>> employeeNameListGroupedByGrade = employeeList.stream()
     .collect(Collectors.groupingBy(Employee::getGrade,
                 Collectors.mapping(Employee::getName, Collectors.toList())));
 
-Map<Integer, List<Integer>> list3 = employeeList.stream()
+Map<Integer, List<Integer>> employeeAgeListGroupedByGrade = employeeList.stream()
     .collect(Collectors.groupingBy(Employee::getGrade,
                 Collectors.mapping(Employee::getAge,
                 Collectors.toList())));
 
-Map<Integer, Long> collect = employeeList.stream()
+Map<Integer, Long> employeeCountAsLongBasedOnGrade = employeeList.stream()
     .collect(Collectors.groupingBy(Employee::getGrade,
                 Collectors.counting()));
 
-Map<Integer, Integer> collect2 = employeeList.stream()
+Map<Integer, Integer> employeeCountAsIntegerBasedOnGrade = employeeList.stream()
     .collect(Collectors.groupingBy(Employee::getGrade,
                 Collectors.collectingAndThen(Collectors.counting(),
                 Long::intValue)));
-
-Map<Integer, List<Employee>> list2 = employeeList.stream()
-    .collect(Collectors.groupingBy(Employee::getGrade));
 
 ```
