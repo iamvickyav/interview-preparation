@@ -1,5 +1,6 @@
 # Java Streams Samples for Reference
 
+### POJO
 ```java
 public class Employee {
 
@@ -9,7 +10,10 @@ public class Employee {
 
     // getters and setters
 }
+```
 
+### Data Setup
+```java
 List<Employee> employeeList = new ArrayList<>();
 employeeList.add(new Employee(3, "Vicky", 25));
 employeeList.add(new Employee(3, "Dinesh", 22));
@@ -20,6 +24,7 @@ employeeList.add(new Employee(2, "Meenakshi", 31));
 employeeList.add(new Employee(2, "Mahesh", 30));
 ```
 
+### Stream Samples
 ```java
 
 Map<Integer, List<Employee>> employeeGradeMap = employeeList.stream()
