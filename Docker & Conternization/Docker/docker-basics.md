@@ -1,4 +1,4 @@
-# Docker 
+# Docker
 
 - Docker is a platform which packages an application and all its dependencies together in the form of containers
 
@@ -26,11 +26,11 @@ docker pull tomcat
 docker pull tomcat:8.0
 ```
 
-*Docker Tomcat images comes with Java pre-installed.
+\*Docker Tomcat images comes with Java pre-installed.
 
 ### Check if Image got downloaded
 
-Once tomcat docker image is downloaded, run images command to get list of images downloaded in your local. You should see something like below as response 
+Once tomcat docker image is downloaded, run images command to get list of images downloaded in your local. You should see something like below as response
 
 ```
 > docker images
@@ -49,7 +49,7 @@ Hence its necessary to bind the container 8080 port to our system's 8080 port us
 docker run -p 8080:8080 tomcat
 ```
 
-Actual syntax of port binding 
+Actual syntax of port binding
 
 ### Add war file to tomcat running in Docker container
 
@@ -76,12 +76,18 @@ docker cp demo.war e361c2d2ebf8:/usr/local/tomcat/webapps
 
 Once the cp command is succesful, you can notice tomcat docker instance delploying demo.war automatically & start the application
 
-In order to see the logs of tomcat docker instance 
+In order to see the logs of tomcat docker instance
 
-```
+```sh
 docker logs -f <CONATAINER_ID>
 ```
 
 <CONATAINER_ID> should be taken from docker ps command
+
+```sh
+docker tag e12149882373 iamvickyav/spring-h2-app:v1
+
+docker push iamvickyav/spring-h2-app:v1
+```
 
 Thats all folks !!
