@@ -15,6 +15,8 @@
 </html>
 ```
 
+## Basic Design CSS
+
 ```css
 .container > div {
   padding: 10px;
@@ -38,5 +40,20 @@ html,body {
 
 .container > div:nth-child(3) {
   background-color: orange;
+}
+```
+
+## To resize particular div
+
+```css
+.container {
+  border: 5px solid #ffcc5c;
+  display: flex;
+}
+.container > div {
+  flex: 1;
+}
+.container > .b2 {
+  flex: 2;
 }
 ```
