@@ -57,3 +57,11 @@ html,body {
   flex: 2;
 }
 ```
+
+## Keep only one div as resizable & rest fixed
+
+```css
+.container > .b2 {
+  flex: 2;
+}
+```
