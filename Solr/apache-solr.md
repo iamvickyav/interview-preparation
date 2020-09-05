@@ -47,4 +47,25 @@ Score of doc = sum of all relavance
 > bin/post -c solrhelp -filetypes html https://factorpad.com/tech/solr/index.html
 ```
 
+```
+> bin/solr delete -c <collection_name>
+```
+
+## DataImport from MySQL
+
+```xml
+<requestHandler name="/dataimport" class="org.apache.solr.handler.dataimport.DataImportHandler">
+    <lst name="defaults">
+      <str name="config">data-config.xml</str>
+    </lst>
+</requestHandler>
+```
+
+
 Reference: [Solr Tutorial](https://factorpad.com/tech/solr/reference/solr-delete.html)
+
+* https://cwiki.apache.org/confluence/display/solr/DataImportHandler
+
+* https://gist.github.com/rnjailamba/8c872768b136a88a10b1
+
+* https://medium.com/@ersinilyazi/import-data-from-mysql-database-in-apache-solr-8-2-with-dataimporthandlers-e1d8c9b06380
