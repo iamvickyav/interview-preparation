@@ -100,6 +100,16 @@ curl http://localhost:8983/solr/bookbazzar/update --data '<commit/>' -H 'Content
 </dataConfig>
 ```
 
+**Delta Import via URL
+
+```sh
+> curl http://localhost:8983/solr/bookbazzar/dataimport?command=delta-import&clean=false
+
+> curl http://localhost:8983/solr/bookbazzar/dataimport?command=full-import&clean=false
+
+> curl http://localhost:8983/solr/bookbazzar/dataimport?command=status
+```
+
 **SQL DDL**
 
 ```sql
@@ -121,3 +131,5 @@ Reference: [Solr Tutorial](https://factorpad.com/tech/solr/reference/solr-delete
 * https://medium.com/@ersinilyazi/import-data-from-mysql-database-in-apache-solr-8-2-with-dataimporthandlers-e1d8c9b06380
 
 * https://stackoverflow.com/questions/20233837/importing-multi-valued-field-into-solr-from-mysql-using-solr-data-import-handler
+
+* https://www.aeologic.com/blog/ultimate-solr-guide-7-importing-structured-data-with-data-import-handler/
