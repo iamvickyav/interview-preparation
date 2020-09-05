@@ -119,3 +119,5 @@ Reference: [Solr Tutorial](https://factorpad.com/tech/solr/reference/solr-delete
 * https://gist.github.com/rnjailamba/8c872768b136a88a10b1
 
 * https://medium.com/@ersinilyazi/import-data-from-mysql-database-in-apache-solr-8-2-with-dataimporthandlers-e1d8c9b06380
+
+* https://stackoverflow.com/questions/20233837/importing-multi-valued-field-into-solr-from-mysql-using-solr-data-import-handler
