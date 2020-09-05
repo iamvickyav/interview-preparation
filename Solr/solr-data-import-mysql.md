@@ -174,32 +174,32 @@ INSERT INTO BOOK_REVIEWS VALUES (10, 'Easy to learn. Explained with examples');
 
 ```xml
 <dataConfig>
-<dataSource type="JdbcDataSource" 
-            driver="com.mysql.jdbc.Driver"
-            url="jdbc:mysql://localhost:3306/book_bazzar" 
-            user="root" 
-            password="rootroot"/>
-<document>
-  <entity name="Book"  
-    pk="BOOK_ID"
-    query="select BOOK_ID,BOOK_TITLE,BOOK_DESC,AUTHOR,TAGS,EDITION,PAGES,LANGUAGE from BOOK_CATALOUGUE"
-    deltaImportQuery="SELECT BOOK_ID,BOOK_TITLE,BOOK_DESC,AUTHOR,TAGS,EDITION,PAGES,LANGUAGE from BOOK_CATALOUGUE WHERE BOOK_ID='${dih.delta.id}'"
-    deltaQuery="SELECT BOOK_ID FROM BOOK_CATALOUGUE WHERE UPDATED_AT > '${dih.last_index_time}'"
-    transformer="RegexTransformer"
-    >
-     <field column="BOOK_ID" name="id"/>
-     <field column="BOOK_TITLE" name="title"/> 
-     <field column="BOOK_DESC" name="desc"/> 
-     <field column="AUTHOR" name="author"/>
-     <field column="TAGS" name="tags" splitBy=","/>     
-     <field column="EDITION" name="edition"/> 
-     <field column="PAGES" name="pages"/>
-     <field column="LANGUAGE" name="language"/>
+  <dataSource type="JdbcDataSource" 
+              driver="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/book_bazzar" 
+              user="root" 
+              password="rootroot"/>
+  <document>
+    <entity name="Book"  
+      pk="BOOK_ID"
+      query="select BOOK_ID,BOOK_TITLE,BOOK_DESC,AUTHOR,TAGS,EDITION,PAGES,LANGUAGE from BOOK_CATALOUGUE"
+      deltaImportQuery="SELECT BOOK_ID,BOOK_TITLE,BOOK_DESC,AUTHOR,TAGS,EDITION,PAGES,LANGUAGE from BOOK_CATALOUGUE WHERE BOOK_ID='${dih.delta.id}'"
+      deltaQuery="SELECT BOOK_ID FROM BOOK_CATALOUGUE WHERE UPDATED_AT > '${dih.last_index_time}'"
+      transformer="RegexTransformer"
+      >
+       <field column="BOOK_ID" name="id"/>
+       <field column="BOOK_TITLE" name="title"/> 
+       <field column="BOOK_DESC" name="desc"/> 
+       <field column="AUTHOR" name="author"/>
+       <field column="TAGS" name="tags" splitBy=","/>     
+       <field column="EDITION" name="edition"/> 
+       <field column="PAGES" name="pages"/>
+       <field column="LANGUAGE" name="language"/>
 
-     <entity name="Book_Reviews" pk="BOOK_ID" query="SELECT * FROM BOOK_REVIEWS WHERE BOOK_ID='${Book.BOOK_ID}'">
-        <field column="REVIEW" name="review" />  
-      </entity>
-  </entity>
-</document>
+       <entity name="Book_Reviews" pk="BOOK_ID" query="SELECT * FROM BOOK_REVIEWS WHERE BOOK_ID='${Book.BOOK_ID}'">
+          <field column="REVIEW" name="review" />  
+        </entity>
+    </entity>
+  </document>
 </dataConfig>
 ```
