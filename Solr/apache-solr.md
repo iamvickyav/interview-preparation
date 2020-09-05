@@ -79,24 +79,27 @@ curl http://localhost:8983/solr/bookbazzar/update --data '<commit/>' -H 'Content
 
 ```xml
 <dataConfig>
-<dataSource type="JdbcDataSource" 
-            driver="com.mysql.jdbc.Driver"
-            url="jdbc:mysql://localhost:3306/book_bazzar" 
-            user="root" 
-            password="rootroot"/>
-<document>
-  <entity name="product"  
-    pk="id"
-    query="select id,name,language from products"
-    deltaImportQuery="SELECT id,name,language from products WHERE id='${dih.delta.id}'"
-    deltaQuery="SELECT id FROM products  WHERE updated_at > '${dih.last_index_time}'"
-    transformer="RegexTransformer"
-    >
-     <field column="id" name="id"/>
-     <field column="name" name="name"/> 
-     <field column="language" name="language" splitBy=","/>       
-  </entity>
-</document>
+    <dataSource type="JdbcDataSource" 
+                driver="com.mysql.jdbc.Driver"
+                url="jdbc:mysql://localhost:3306/book_bazzar" 
+                user="root" 
+                password="rootroot"/>
+    <document>
+      <entity name="product"  
+        pk="id"
+        query="select id,name,language from products"
+        deltaImportQuery="SELECT id,name,language from products WHERE id='${dih.delta.id}'"
+        deltaQuery="SELECT id FROM products  WHERE updated_at > '${dih.last_index_time}'"
+        transformer="RegexTransformer"
+        >
+         <field column="id" name="id"/>
+         <field column="name" name="name"/> 
+         <field column="language" name="language" splitBy=","/>
+          <entity name="product_comment" pk="id" query="SELECT * FROM product_comments WHERE id='${product.id}'">
+            <field column="comments" name="comments" />  
+          </entity>
+      </entity>
+    </document>
 </dataConfig>
 ```
 
@@ -120,9 +123,16 @@ CREATE TABLE products (
     language varchar(30),
     PRIMARY KEY (id)
 );
+CREATE TABLE product_comments (
+    id int(11),
+    comments varchar(30),
+    FOREIGN KEY (id) REFERENCES products(id)
+);
 ```
 
-Reference: [Solr Tutorial](https://factorpad.com/tech/solr/reference/solr-delete.html)
+Reference: 
+
+* [Solr Tutorial](https://factorpad.com/tech/solr/reference/solr-delete.html)
 
 * https://cwiki.apache.org/confluence/display/solr/DataImportHandler
 
