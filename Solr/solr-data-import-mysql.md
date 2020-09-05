@@ -127,3 +127,76 @@ INSERT INTO BOOK_REVIEWS VALUES (6, 'Must read for Professional Spring Developer
 INSERT INTO BOOK_REVIEWS VALUES (10, 'JQuery is so easy after this book');
 INSERT INTO BOOK_REVIEWS VALUES (10, 'Easy to learn. Explained with examples');
 ```
+
+#### managed-schema
+
+```xml
+<field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+<!-- docValues are enabled by default for long type so we don't need to index the version field  -->
+<field name="_version_" type="plong" indexed="false" stored="false"/>
+<field name="_root_" type="string" indexed="true" stored="false" docValues="false" />
+<!-- <field name="_text_" type="text_general" indexed="true" stored="false" multiValued="true"/> -->
+
+<!-- <field name="book_id" type="pint" indexed="true" stored="true" required="true" multiValued="false" /> -->
+
+<field name="title" type="text_en" indexed="true" stored="true" required="true" multiValued="false" />
+
+<field name="desc" type="text_en" indexed="false" stored="true" required="true" multiValued="false" />
+
+<field name="author" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
+
+<field name="tags" type="string" indexed="true" stored="true" required="true" multiValued="true" />
+
+<field name="edition" type="pint" indexed="false" stored="true" required="true" multiValued="false" />
+
+<field name="pages" type="pint" indexed="false" stored="true" required="true" multiValued="false" />
+
+<field name="review" type="string" indexed="false" stored="true" required="false" multiValued="true" />
+```
+
+#### solrconfig.xml
+
+```xml
+<lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-dataimporthandler-.*\.jar" />
+<lib dir="${solr.install.dir:../../../..}/dist/" regex="mysql-connector-java-8.0.21.jar" />
+
+
+<requestHandler name="/dataimport" class="org.apache.solr.handler.dataimport.DataImportHandler">
+  <lst name="defaults">
+    <str name="config">data-config.xml</str>
+    </lst>
+</requestHandler>
+```
+
+#### data-config.xml
+
+```xml
+<dataConfig>
+<dataSource type="JdbcDataSource" 
+            driver="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://localhost:3306/book_bazzar" 
+            user="root" 
+            password="rootroot"/>
+<document>
+  <entity name="Book"  
+    pk="BOOK_ID"
+    query="select BOOK_ID,BOOK_TITLE,BOOK_DESC,AUTHOR,TAGS,EDITION,PAGES from BOOK_CATALOUGUE"
+    deltaImportQuery="SELECT BOOK_ID,BOOK_TITLE,BOOK_DESC,AUTHOR,TAGS,EDITION,PAGES from BOOK_CATALOUGUE WHERE BOOK_ID='${dih.delta.id}'"
+    deltaQuery="SELECT BOOK_ID FROM BOOK_CATALOUGUE WHERE UPDATED_AT > '${dih.last_index_time}'"
+    transformer="RegexTransformer"
+    >
+     <field column="BOOK_ID" name="id"/>
+     <field column="BOOK_TITLE" name="title"/> 
+     <field column="BOOK_DESC" name="desc"/> 
+     <field column="AUTHOR" name="author"/>
+     <field column="TAGS" name="tags" splitBy=","/>     
+     <field column="EDITION" name="edition"/> 
+     <field column="PAGES" name="pages"/>
+
+     <entity name="Book_Reviews" pk="BOOK_ID" query="SELECT * FROM BOOK_REVIEWS WHERE BOOK_ID='${Book.BOOK_ID}'">
+        <field column="REVIEW" name="review" />  
+      </entity>
+  </entity>
+</document>
+</dataConfig>
+```
