@@ -53,6 +53,7 @@ Score of doc = sum of all relavance
 
 ## DataImport from MySQL
 
+**solrconfig.xml**
 ```xml
 <requestHandler name="/dataimport" class="org.apache.solr.handler.dataimport.DataImportHandler">
     <lst name="defaults">
@@ -61,9 +62,10 @@ Score of doc = sum of all relavance
 </requestHandler>
 ```
 
+**solrconfig.xml**
 ```xml
-<lib dir=”${solr.install.dir:../../../..}/dist/” regex=”solr-dataimporthandler-.*\.jar” />
-<lib dir=”${solr.install.dir:../../../..}/dist/” regex=”mysql-connector-java-8.0.21.jar” />
+<lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-dataimporthandler-.*\.jar" />
+<lib dir="${solr.install.dir:../../../..}/dist/" regex="mysql-connector-java-8.0.21.jar" />
 ```
 
 Reference: [Solr Tutorial](https://factorpad.com/tech/solr/reference/solr-delete.html)
