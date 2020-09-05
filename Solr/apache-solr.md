@@ -61,6 +61,10 @@ Score of doc = sum of all relavance
 </requestHandler>
 ```
 
+```xml
+<lib dir=”${solr.install.dir:../../../..}/dist/” regex=”solr-dataimporthandler-.*\.jar” />
+<lib dir=”${solr.install.dir:../../../..}/dist/” regex=”mysql-connector-java-8.0.21.jar” />
+```
 
 Reference: [Solr Tutorial](https://factorpad.com/tech/solr/reference/solr-delete.html)
 
