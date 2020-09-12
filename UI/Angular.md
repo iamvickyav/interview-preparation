@@ -114,3 +114,66 @@ export class ItemDisplayComponent implements OnInit {
 }
 ```
 
+### Make HTTP Calls
+
+**Import HTTP Module in app.module.ts**
+
+```typescript
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    ItemDisplayComponent,
+    HomeComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+```
+
+**Import HttpClient in Service**
+
+```typescript
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class HomesuggestionService {
+  constructor(private http: HttpClient) {}
+
+  getNewArrivals() {
+    return this.http.get('http://localhost:8080/location/test');
+  }
+}
+```
+
+***Calling service from a Component***
+```typescript
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
+})
+export class HomeComponent implements OnInit {
+  constructor(private service: HomesuggestionService) {}
+
+  ngOnInit(): void {
+    this.service.getNewArrivals().subscribe(
+      (response) => this.processResponse(response),
+      (error) => this.processErrorResponse(error)
+    );
+    this.service.getBestSellers();
+  }
+
+  processResponse(response) {
+    console.log(response);
+  }
+
+  processErrorResponse(error) {
+    console.log(error.error);
+  }
+}
+```
