@@ -82,3 +82,35 @@ To access member varaible (interpolation) = {{ var_name }}
 ```
 
 app.module.ts - gets updates 
+
+### How to read Path Variable
+
+**app-routing.module.ts**
+```typescript
+const routes: Routes = [
+  { path: '', component: WelcomeComponent },
+  { path: 'display/:productId', component: ItemDisplayComponent },
+];
+```
+
+**ItemDisplayComponent.ts**
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'app-item-display',
+  templateUrl: './item-display.component.html',
+  styleUrls: ['./item-display.component.css'],
+})
+export class ItemDisplayComponent implements OnInit {
+
+  constructor(private route: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
+    console.log(this.route.snapshot.params['productId']);
+  }
+}
+```
+
