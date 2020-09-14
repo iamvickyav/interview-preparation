@@ -72,3 +72,92 @@ draw({
   y: 2,
 });
 ```
+
+## Class & Object
+
+```typescript
+class Point {
+  x: number;
+  y: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+
+  draw() {
+    console.log("X:" + this.x + ",Y:" + this.y);
+  }
+
+  drawWithPoint(point: Point) {}
+}
+
+//let p: Point = new Point();
+let p = new Point(2, 2);
+p.draw();
+```
+
+* Construct param can be made optional by putting a ?. Remember once a param is optional, all following property has to be optional 
+
+```typescript
+constructor(x?: number, y?: number) {
+    this.x = x;
+    this.y = y;
+}
+
+let p = new Point();
+```
+
+```typescript
+class Point {
+  x: number;
+  y: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+// Equiavalent to below
+
+class Point {
+  constructor(private x: number, private y: number) {
+  }
+}
+```
+
+## Access modifiers
+* Public (default access specifier)
+* Private
+* Protected
+
+## Module in Typescript
+
+```typescript
+## point.ts
+
+class Point {
+  x: number;
+  y: number;
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+
+  draw() {
+    console.log("X:" + this.x + ",Y:" + this.y);
+    console.log(`X: ${this.x}, Y${this.y}`);
+  }
+}
+```
+
+```typescript
+import {Point} from './point';
+
+let point = new Point(2,2);
+point.draw();
+```
+
+* If we fail in compilation `tsc *.ts --target ES5`
