@@ -76,6 +76,7 @@ FROM tomcat:8.5.21-jre8-alpine
 COPY target/H2Sample.war /usr/local/tomcat/webapps
 CMD ["catalina.sh","run"]
 ```
+---
 
 ## Understanding Dockerfile
 
@@ -89,16 +90,18 @@ CMD ["catalina.sh","run"]
 
 **ADD** - Can be used in place of COPY command. Copies content from source to destination. Also can copy file from URL
 
+---
+
 ## Things to note
 
-Note 1: `catalina.sh run` command will run Tomcat is foreground & will not let container shutdown. So we can see container id in `docker ps` command
+**Note 1:** `catalina.sh run` command will run Tomcat is foreground & will not let container shutdown. So we can see container id in `docker ps` command
 
-Note 2: In the destination side of `COPY` command, if we are not specifying file name, the same file name will be used
+**Note 2:** In the destination side of `COPY` command, if we are not specifying file name, the same file name will be used
 
-        E.g. `COPY target/H2Sample.war /usr/local/tomcat/webapps` will copy H2Sample.war into webapps folder without changing name
+      E.g. `COPY target/H2Sample.war /usr/local/tomcat/webapps` will copy H2Sample.war into webapps folder without changing name
 
-        E.g. `COPY target/H2Sample.war /usr/local/tomcat/webapps/vicky.war` will copy H2Sample.war but in the name vicky.war into webapps folder
+      E.g. `COPY target/H2Sample.war /usr/local/tomcat/webapps/vicky.war` will copy H2Sample.war but in the name vicky.war into webapps folder
 
-Note 3: `docker build` command will try to use existing images from cache while building image
+**Note 3:** `docker build` command will try to use existing images from cache while building image
 
-Note 4: Make sure you remove not only unwanted images built and also all stopped containers often. Refer to Commands Used section for the same
+**Note 4:** Make sure you remove not only unwanted images built and also all stopped containers often. Refer to Commands Used section for the same
