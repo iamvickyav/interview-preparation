@@ -1,46 +1,9 @@
 
 # Docker session
 
-## Dockerfiles used
-
-### Dockerfile 1: Docker image alpine  + Java installed
-
-```
-FROM alpine:3.11
-# Executed while building the image
-RUN apk add openjdk11
-# While running the image(container)
-CMD ["/usr/bin/java", "-version"]
-```
-
-### Dockerfile 2: Docker image alpine  + Java installed + Copy JAR + Running JAR file
-
-```
-FROM alpine:3.11
-# Executed while building the image
-RUN apk add openjdk11
-# COPY from Source to Destination
-COPY target/H2Sample.jar H2Sample.jar
-# While running the image(container)
-CMD ["/usr/bin/java", "-jar", "H2Sample.jar"]
-```
-
-### Dockerfile 3: Docker tomcat image + Copy WAR file to Webapps folder + Running WAR file
-
-```
-# Download Tomcat
-FROM tomcat:8.5.21-jre8-alpine
-# COPY WAR file
-COPY target/H2Sample.war /usr/local/tomcat/webapps
-# Start Tomcat
-CMD ["catalina.sh","run"]
-```
-
-----
-### Commands Used
+## Commands Used
 
 ```sh
-
 # Information about Docker
 > docker info
 
@@ -84,5 +47,40 @@ CMD ["catalina.sh","run"]
 
 ```
 
+## Dockerfiles used
 
+### Dockerfile 1: Docker image alpine  + Java installed
 
+```
+FROM alpine:3.11
+RUN apk add openjdk11
+CMD ["/usr/bin/java", "-version"]
+```
+
+### Dockerfile 2: Docker image alpine  + Java installed + Copy JAR + Running JAR file
+
+```
+FROM alpine:3.11
+RUN apk add openjdk11
+COPY target/H2Sample.jar H2Sample.jar
+CMD ["/usr/bin/java", "-jar", "H2Sample.jar"]
+```
+
+### Dockerfile 3: Docker tomcat image + Copy WAR file to Webapps folder + Running WAR file
+
+```
+FROM tomcat:8.5.21-jre8-alpine
+COPY target/H2Sample.war /usr/local/tomcat/webapps
+CMD ["catalina.sh","run"]
+```
+### Understanding Dockerfile
+
+**FROM** - BASE IMAGE NAME to start with
+
+**CMD** - Commands to be executed while running the container (docker run command)
+
+**RUN** - Run the command while building the image (docker build command)
+
+**COPY** - Copy from source to destination
+
+**ADD** - Can be used in place of COPY command. Copies content from source to destination. Also can copy file from URL
