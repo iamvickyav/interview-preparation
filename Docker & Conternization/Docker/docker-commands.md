@@ -2,6 +2,8 @@
 
 ## Interesting Docker commands
 
+### Container commands
+
 #### To list containers (including one which is stopped)
 
 ```sh
@@ -26,7 +28,7 @@ docker container rm <CONTAINER_ID>
 docker container rm $(docker container ls –aq)
 ```
 
-### T0 mount volume in container to outside world
+#### To mount volume in container to outside world
 
 ```sh
 docker run -p 8080:8080 -v /usr/local/tomcat/logs:/Users/jarvis/Downloads/logs d991231dccdf
