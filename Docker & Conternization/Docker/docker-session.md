@@ -73,7 +73,7 @@ FROM tomcat:8.5.21-jre8-alpine
 COPY target/H2Sample.war /usr/local/tomcat/webapps
 CMD ["catalina.sh","run"]
 ```
-### Understanding Dockerfile
+## Understanding Dockerfile
 
 **FROM** - BASE IMAGE NAME to start with
 
