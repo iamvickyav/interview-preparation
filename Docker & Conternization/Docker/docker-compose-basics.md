@@ -121,7 +121,7 @@ spring.datasource.url=jdbc:mysql://mysql-db:3306/ORDER_DB?useSSL=false&allowPubl
 Thats all folks !!!
 
 
-````
+```
 version : '3'
 services :
   web :
