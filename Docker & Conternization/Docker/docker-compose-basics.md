@@ -119,3 +119,27 @@ spring.datasource.url=jdbc:mysql://mysql-db:3306/ORDER_DB?useSSL=false&allowPubl
 ```
 
 Thats all folks !!!
+
+
+````
+version : '3'
+services :
+  web :
+    build : .
+    image: web-app
+    ports :
+      - "8080:8080"
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'MY_DB'
+      MYSQL_ROOT_PASSWORD: 'rootroot'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - /Users/jarvis/Downloads/mysql-sample/src/main/resources:/docker-entrypoint-initdb.d
+      - ./data:/var/lib/mysql
+```
