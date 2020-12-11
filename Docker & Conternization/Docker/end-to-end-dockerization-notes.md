@@ -1,6 +1,8 @@
 # Docker Session 2 Notes
 
-In our sample application, we had 
+In our sample application, we had a Spring Boot application & MySQL Database. Initially we started with having both Spring Boot Application & MySQL Database in our local system. Then we Dockerized them one by one. Based on Dockerization, the connection string to DB from Spring Boot app was changed accordingly. 
+
+In Below, we captured step by step on how we Dockerized an entire application from scratch 
 
 <hr/>
 
