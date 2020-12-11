@@ -1,15 +1,37 @@
-## Basics of Dockerfile
+# Dockerfile
 
-### Deploying WAR file in Tomcat (Running in Docker)
+Dockerfile represent the list of steps to create a Docker image. The file should be created with name **Dockerfile** without any extension
 
-To learn how to deploy WAR file in Tomcat running in Docker **using commands**, please follow the steps mentioned in this file
-https://github.com/iamvickyav/preparation/blob/master/Docker/docker-basics.md
+## Sample Dockerfiles
 
-Now we are going to see how to do the same using Dockerfile. 
+### Alpine Linux Distribution + Java
 
-Here is the content of our Dockerfile
+```
+FROM alpine:3.11
+RUN apk add openjdk11
+CMD ["/usr/bin/java", "-version"]
+```
 
-**Dockerfile is the file name without any extension**
+### Alpine Linux Distribution + Tomcat
+```
+FROM tomcat:8.5.21-jre8-alpine
+COPY target/Sample.war /usr/local/tomcat/webapps
+ENTRYPOINT ["catalina.sh", "start"]
+```
+
+### Alpine + Java
+
+```
+FROM alpine:3.11
+# While building the image
+RUN apk add openjdk11
+# COPY from Source to Destination
+COPY target/H2Sample.jar H2Sample.jar
+# While running the image(container)
+CMD ["/usr/bin/java", "-jar", "H2Sample.jar"]
+```
+
+### Deploying WAR with Tomcat
 
 ```
 FROM tomcat:latest
@@ -17,33 +39,32 @@ COPY target/demo.war /usr/local/tomcat/webapps/
 CMD ["catalina.sh", "run"]
 ```
 
-| Command       | Usage                                             |
-| ------------- |---------------------------------------------------|
-| FROM          | Base Image Name                                   |
-| COPY          | To copy from source to destination                |
-| CMD           | First command to be executed when Docker image run|
+## Building image from Dockerfile
 
-
-### How to build image from Dockerfile
-
-Use the below command to build the docker image from a Dockerfile
+To build a Docker image, 
 
 ```
 > docker build -t my-img .
 ```
 
--t is for tagging a name to the image. In this case its my-img
+* -t is for tagging a name to the image. In this case its my-img
 
-**Note**: There is a .(dot) at end of the above docker build command. dot directs docker built command to look for Dockerfile in current directory
+* There is a .(dot) at end of the above docker build command. dot meant to say docker build command should look for Dockerfile in current directory
 
-Use **docker images** command to check whether my-img got created successfully. 
+## Verify image creation
+
+* Use `docker images` command to check whether my-img got created successfully
+
+
+## Understanding Dockerfile
 
 **RUN** executes command(s) in a new layer and creates a new image. E.g., it is often used for installing software packages
 **CMD** sets default command and/or parameters, which can be overwritten from command line when docker container runs
 **ENTRYPOINT** configures a container that will run as an executable
 
-**Reference**: https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
+**Refer**: https://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
 
-Thats all folks !!
+## More Dockerfile samples
+
 
 
