@@ -10,27 +10,26 @@
 
 ## Dockerizing application with Docker commands
 
-Lets assume we have a Spring Boot application which generates executable JAR file (say Sample.jar). Typically, we can run the application with `java -jar Sample.jar`
+Lets assume we have a Spring Boot application which generates WAR file (say demo.war). In order to run WAR file, we need Tomcat server. So lets begin from Tomcat image
 
-Now its time to Dockerize this application. In order to run JAR file, we need Java
+### Pull Tomcat Image
 
-### Pull OpenJDK Java Image
-
-First, we need to pull the OpenJDK Java image using `pull` command
+First, we need to pull the Tomcat Java image using `pull` command
 
 ```
 docker pull tomcat:8.5.21-jre8-alpine
 ```
 
-**Remember:** Specifying **tomcat:8.5.21-jre8-alpine** will always pull the latest image from Docker hub
-
+**Remember** 
+* Specifying **tomcat:8.5.21-jre8-alpine** will always pull the latest image from Docker hub
+* alpine is a Linux distribution like Ubuntu but has size of just 5 MB. Docker images built on top of alpine are usally small in size & hence downloads much faster. Hence we used alpine version of tomcat in our sample
 
 ### Verify if image got downloaded
 
 Once pull command execution is complete, run `docker images` command to get list of images. You should see something like below as response
 
 ```sh
-> docker images
+docker images
 
 REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
 tomcat:8.5.21-jre8-alpine       latest              d991231dccdf        4 weeks ago         113MB
@@ -39,7 +38,7 @@ tomcat:8.5.21-jre8-alpine       latest              d991231dccdf        4 weeks 
 ### Running Docker Image (aka creating container)
 
 ```sh
-> docker run -p 8080:8080 tomcat:8.5.21-jre8-alpine
+docker run -p 8080:8080 tomcat:8.5.21-jre8-alpine
 ```
 
 #### Port mapping
@@ -55,7 +54,7 @@ To do port mapping, we have passed `-p 8080:8080` as argument for the run comman
 Once we execute run command, Docker creates an instance for the Docker image called as the Docker container. Every container instance will have its own id assigned called CONTAINER_ID. The CONTAINER_ID can be verified using the `docker ps` command
 
 ```sh
-> docker ps
+docker ps
 
 CONTAINER ID        IMAGE                       COMMAND             CREATED             STATUS              PORTS                    NAMES
 b414970f84c1        tomcat:8.5.21-jre8-alpine   "catalina.sh run"   10 seconds ago      Up 9 seconds        0.0.0.0:8080->8080/tcp   nifty_aryabhata
@@ -85,4 +84,5 @@ docker logs -f <CONATAINER_ID>
 
 So thats all about running WAR file with Tomcat Docker Insance using Docker commands.
 
-But do we need to remember all these commands & execute them one by one to get the job done ? Is there any simple alternative for it? Yes, Fortunately, we have Dockerfile to automate these steps
+But do we need to remember all these commands & execute them one by one to get the job done ? Is there any simple alternative to create docker images ? 
+Yes, Fortunately, we have Dockerfile to automate these steps
