@@ -1,31 +1,26 @@
 # docker-compose.yaml basics
 
-## Introduction
+docker-compose allow us to start multiple container services at a time. The configuration is written in YAML format
 
-When we want to run Multi-container Docker application, we have to go for docker-compose.yaml
+## Sample
 
-docker-compose can able to start multiple container services at a time. The configuration is written in YAML format
- 
-## End to End containerization of Sample Application
+Lets assume we have a EmployeeApp built using SpringBoot REST & uses MySQL for DB. Below is the sample for doing end to end containerization of the EmployeeApp application. 
 
-### Dockerfile & docker-compose.yaml sample files
- 
-Lets say we have a Demo web application developed using SpringBoot which uses MySQL for database. Lets first containerize the application entirely first using Dockerfile & docker-compose.yaml..
+### Dockerfile
 
-**Dockerfile**
 ```
 FROM openjdk:8-jdk-alpine
-COPY EmpApp.jar EmpApp.jar
+COPY EmployeeApp.jar EmployeeApp.jar
 CMD ["java", "-jar", "EmpApp.jar"]
 ```
+### docker-compose.yaml
 
-**docker-compose.yaml**
-```
+```yaml
 version : '3'
 services :
   webapp :
     build : .
-    image : web-app
+    image : employee-app
     ports :
       - "8080:8080"
   dbapp :
@@ -63,33 +58,9 @@ services :
 |   ports                |   8080:8080              |   Ports we want to expose outside of Docker container. The format is <HOST_IP>:<CONTAINER_IP>            |
 |   volumes              |   ./data:/var/lib/mysql  |   Volumes we want to mount from host to Docker container                                                 |
 
-<hr>
+### Starting multiple containers with docker-compose.yaml
 
-## Setting DB Connection String properly
-
-### Default DB Connecting String
-
-Typically to connect Spring Boot with MySQL, **connection string** used to be like this
-
-```
-spring.datasource.url=jdbc:mysql://localhost:3306/MY_DB?useSSL=false&allowPublicKeyRetrieval=true
-```
-
-If you notice, the connection string refers to localhost:3306 for MySQL. Since we containerized the entire application, MySQL will run on its own container. So connecting from SpringBoot container with MySQL container is not gonna work with localhost. 
-
-Hence we need to use the networking capabilities of the Docker to make inter cotainer communication possible
-
-### Fixing DB Connecting String for MySQL running in Container
-
-spring.datasource.url=jdbc:mysql://<del>localhost</del>:3306/ORDER_DB?useSSL=false&allowPublicKeyRetrieval=true
-
-spring.datasource.url=jdbc:mysql://**dbapp**:3306/ORDER_DB?useSSL=false&allowPublicKeyRetrieval=true
-
-**dbapp** is nothing but the name we given for the MySQL image in docker-compose.yaml file. Refer to line 31 above for **dpapp**
-
-## Starting multiple containers with docker-compose.yaml file
-
-In order to start the application, we can use either of the following commands
+In order to start the application, use either of the following commands
 
 ```sh
 > docker-compose up
@@ -98,5 +69,33 @@ or
 
 > docker-compose up --build
 ```
+
+<hr>
+
+## Networking in Docker
+
+In above docker-compose sample, we have started two containers, one for Employee Web Application & other is for MySQL Database. Typically when we want to connect Web application with MySQL, we use **connection string** like below
+
+```
+spring.datasource.url=jdbc:mysql://<b>localhost:3306</b>/MY_DB?useSSL=false&allowPublicKeyRetrieval=true
+```
+
+3306 is the default port of MySQL server. 
+
+After we containerized the entire application, MySQL will run in its own container (read as its own operating system) whereas the Spring Boot application will be running in its own container. So localhost of SpringBoot container is not the localhost of MySQL container. Hence connecting with localhost:3306 from SpringBoot container is not gonna work
+
+Hence we need to rely on the networking capabilities of the docker-compose to make inter-container communication possible
+
+When we start application using `docker-compose up`, docker-compose creates a default network bridge between all the containers it start. We can refer to any container started by docker-compose using this default network bridge using the name given for the container in docker-compose.yaml file
+
+### Fixing DB Connection between MySQL container & SpringBoot container
+
+Replace the localhost in connection string with name given for docker container in docker-compose.yaml file can fix the inter-container communication
+
+spring.datasource.url=jdbc:mysql://<del>localhost</del>:3306/ORDER_DB?useSSL=false&allowPublicKeyRetrieval=true
+
+spring.datasource.url=jdbc:mysql://**dbapp**:3306/ORDER_DB?useSSL=false&allowPublicKeyRetrieval=true
+
+**dbapp** is nothing but the name we given for the MySQL image in docker-compose.yaml file. Refer to line 31 above for **dpapp**
 
 Thats all folks !!!
