@@ -1,6 +1,6 @@
-# Docker Session 2 Notes
+# End to End Dockerization
 
-Consider we have a Simple Spring Boot application which exposes REST endpoints to fetch Employee records from MySQL Database.
+Consider we have a Simple Spring Boot application which exposes REST endpoints to fetch Employee records from MySQL Database
 
 In Below, we explained step by step on how we can Dockerize the entire application
 
