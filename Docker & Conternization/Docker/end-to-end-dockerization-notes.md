@@ -1,12 +1,12 @@
 # Docker Session 2 Notes
 
-In our sample application, we had a Spring Boot application & MySQL Database. Initially we started with having both Spring Boot Application & MySQL Database in our local system. Then we Dockerized them one by one. Based on Dockerization, the connection string to DB from Spring Boot app was changed accordingly. 
+Consider we have a Simple Spring Boot application which exposes REST endpoints to fetch Employee records from MySQL Database.
 
-In Below, we captured step by step on how we Dockerized an entire application from scratch 
+In Below, we explained step by step on how we can Dockerize the entire application
 
 <hr/>
 
-### Scenario 1 : Both SpringBoot App & DB Running in local (host system)
+### Stage 1 : Both SpringBoot App & DB Running in local (host system)
 
 <hr/>
 
@@ -24,7 +24,7 @@ N/A
 
 <hr/>
 
-### Scenario 2 : SpringBoot App containerized using Dockerfile & DB Running in local (host system)
+### Stage 2 : SpringBoot App containerized using Dockerfile & DB Running in local (host system)
 
 <hr/>
 
@@ -45,7 +45,7 @@ N/A
 
 <hr/>
 
-### Scenario 3 :  SpringBoot App containerized using docker-compose.yaml & DB Running in local (host system)
+### Stage 3 :  SpringBoot App containerized using docker-compose.yaml & DB Running in local (host system)
 
 <hr/>
 
@@ -74,7 +74,7 @@ services:
 ```
 <hr/>
 
-### Scenario 4 :  Both SpringBoot App & MySQL DB containerized using docker-compose.yaml
+### Stage 4 :  Both SpringBoot App & MySQL DB containerized using docker-compose.yaml
 
 <hr/>
 
