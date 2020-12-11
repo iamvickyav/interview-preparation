@@ -1,6 +1,6 @@
 # Dockerfile
 
-Dockerfile represents the list of steps to create a Docker image. The file should be created with name **Dockerfile** without any extension
+Dockerfile represents the list of steps to create a Docker image. The file should be created with name **Dockerfile** without any extension. Dockerfile help us avoid building Docker image with Docker commands
 
 ## Building Tomcat Image 
 
@@ -66,3 +66,5 @@ RUN apk add openjdk11
 COPY target/H2Sample.jar H2Sample.jar
 CMD ["/usr/bin/java", "-jar", "H2Sample.jar"]
 ```
+
+Ok. What if we need to create & run multiple Docker containers at a same time ? If we have multiple containers, how the inter container communication takes place ? The answer is the **docker-compose.yaml** file
