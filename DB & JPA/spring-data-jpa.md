@@ -11,7 +11,6 @@
 ## Interesting facts
 
 * All fields in @Entity class are default persistable
-* 
 
 <hr>
 
@@ -86,3 +85,22 @@ Hibernate:
         id=?
 ```
 
+### One to One Ownership
+
+In below example, customer is the owner of the address
+
+```
+@Entity
+class Customer {
+
+    @OneToOne
+    Address address;
+}
+
+@Entity
+class Address {
+
+    @OneToOne(mappedBy="address");
+    Customer customer;
+}
+```
