@@ -3,6 +3,9 @@
 ## Key Learnings List
 
 * @Modifying is meaningless without @Query annotation
+* @Modifying needs @Transactional. Otherwise will result in TransactionRequiredException
+* @Transactional only rollback on RuntimeException
+* @Transactional(readOnly = true) can be avoided as readOnly adds few performance overheads unncessarily
 
 <hr>
 
