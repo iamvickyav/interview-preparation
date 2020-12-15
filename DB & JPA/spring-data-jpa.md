@@ -6,6 +6,12 @@
 * @Modifying needs @Transactional. Otherwise will result in TransactionRequiredException
 * @Transactional only rollback on RuntimeException
 * @Transactional(readOnly = true) can be avoided as readOnly adds few performance overheads unncessarily
+* Inside @Transactional, if you get a fetch a Entity & update the Entity, you don't need to explicitly save the Entity
+
+## Interesting facts
+
+* All fields in @Entity class are default persistable
+* 
 
 <hr>
 
