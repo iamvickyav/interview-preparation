@@ -18,7 +18,7 @@ Go to https://artifacthub.io/packages/helm/elastic/elasticsearch & follow the in
 
 ```sh
 > helm repo add elastic https://helm.elastic.co
-> helm install elasticsearch --version <version> elastic/elasticsearch
+> helm install elasticsearch --version 7.10.1 elastic/elasticsearch
 ```
 
 
