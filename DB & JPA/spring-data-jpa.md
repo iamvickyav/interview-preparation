@@ -1,5 +1,52 @@
 # Spring Data JPA - Learnings
 
+## Understanding Datasource & Connection
+
+```java
+public class MySqlDataSourceTest {
+
+public static void main(String[] args) throws SQLException, ClassNotFoundException {
+
+
+ /************** using DriverManager start **************/
+    Class.forName("com.mysql.cj.jdbc.Driver");
+    Connection c=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/MY_DB","root","rootroot");
+ /************** using DriverManager ends **************/
+ 
+ /************** using Normal Datasource Starts**************/  
+ DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+	dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
+	dataSourceBuilder.url("jdbc:mysql://localhost:3306/MY_DB");
+	dataSourceBuilder.username("root");
+	dataSourceBuilder.password("rootroot");
+	return dataSourceBuilder.build(); 
+ /************** using Normal Datasource Start**************/ 
+
+ /************** Connection Pooling Starts **************/
+  HikariConfig hikariConfig = new HikariConfig();
+		hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		hikariConfig.setJdbcUrl("jdbc:mysql://localhost:3306/MY_DB");
+		hikariConfig.setUsername("root");
+		hikariConfig.setPassword("rootroot");
+
+		hikariConfig.setMaximumPoolSize(5);
+		hikariConfig.setConnectionTestQuery("SELECT 1");
+
+		return new HikariDataSource(hikariConfig);
+  Connection c =  (Connection) d.getConnection();
+ /************** Connection Poolin Ends**************/ 
+ 
+
+    Statement st=(Statement) c.createStatement();
+    ResultSet rs=st.executeQuery("select id from employee");
+    while(rs.next())
+    {
+        System.out.println(rs.getInt(1));
+    }
+
+}
+```
+
 ## Key Learnings List
 
 * @Modifying is meaningless without @Query annotation
