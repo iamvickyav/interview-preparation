@@ -8,6 +8,43 @@
 * @Transactional(readOnly = true) can be avoided as readOnly adds few performance overheads unncessarily
 * Inside @Transactional, if you get a fetch a Entity & update the Entity, you don't need to explicitly save the Entity
 
+## Key Learnings about the Mapping 
+
+### One to One
+* For @OneToOne associations, you should always share the Primary Key with the parent table, and you should avoid the bidirectional association
+* PK and FK columns are most often indexed, so sharing the PK can reduce the index footprint by half, which is desirable since you want to store all your indexes into memory to speed up index scanning
+
+```java
+@Entity
+@Table(name = "post")
+public class Post {
+ 
+    @Id
+    @GeneratedValue
+    private Long id;
+ 
+    private String title;
+ 
+    @OneToOne(mappedBy = "post", cascade = CascadeType.ALL,
+              fetch = FetchType.LAZY, optional = false)
+    private PostDetails details;
+}
+
+
+@Entity
+@Table(name = "post_details")
+public class PostDetails {
+ 
+    @Id
+    private Long id;
+ 
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    private Post post; 
+}
+```
+**Reference** : https://vladmihalcea.com/the-best-way-to-map-a-onetoone-relationship-with-jpa-and-hibernate/
+
 ## Interesting facts
 
 * All fields in @Entity class are default persistable
