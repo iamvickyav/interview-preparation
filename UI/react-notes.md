@@ -170,3 +170,78 @@ const Welcome = (props) => {
 
 export default Welcome
 ```
+
+## props vs state
+
+| props  |  state |
+|----------------------|---------------------------|
+|  passed to component |  managed by the component |
+| function param       | variabled declared in function|
+| immutable            | mutable |
+| props in functional & this.props in class | useState hook in functional and this.state in class |
+
+## state in class
+
+```js
+import React from 'react'
+import StateWelcome from './component/StateWelcome'
+
+class App extends React.Component {
+  render() {
+    return (
+     <div>
+       <StateWelcome></StateWelcome>
+     </div>
+    );
+  }
+}
+export default App;
+
+import React, { Component } from 'react'
+
+class StateWelcome extends Component {
+
+    constructor() {
+        super()
+        this.state = {
+            msg : 'Welcome Kee'
+        }
+    }   
+
+    render() {
+        return <h1>{this.state.msg}</h1>
+    }
+}
+
+export default StateWelcome
+```
+### Button click event
+
+```js
+import React, { Component } from 'react'
+
+class StateChangeWelcome extends Component {
+
+    constructor(){
+        super()
+        this.state = {
+            msg : "Click on Agree button to accept the terms"
+        }
+    }
+    agree() {
+        this.setState ({
+            msg : "Thank you for accepting the terms !"
+        })
+    }
+    render() {
+        return (
+            <div>
+                <h1> {this.state.msg} </h1>
+                <button onClick= {() => this.agree()}>Agree</button>
+            </div>
+        )
+    }
+}
+
+export default StateChangeWelcome
+```
