@@ -37,11 +37,13 @@ export defailt Hello
 ```
 
 ### As arrow function
-```
+
+```js
 import React from "react";
 
 const Hello = () => <h1>Vicky here</h1>
 export default Hello;
+```
 
 ## Class Component
 
