@@ -487,3 +487,48 @@ class EventBinding extends Component {
 export default EventBinding
 ```
 
+## Calling Parent Component from Child Component
+
+```js
+import React, { Component } from 'react'
+import ChildComponent from './ChildComponent'
+
+class ParentComponent extends Component {
+
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             greet : 'greeting'
+        }
+        this.parentHello = this.parentHello.bind(this)
+    }
+    
+    parentHello() {
+        alert(`Hello ! ${this.state.greet} from parent`)
+    }
+
+    render() {
+        return (
+            <div>
+                <ChildComponent callParent={this.parentHello}></ChildComponent>
+            </div>
+        )
+    }
+}
+
+export default ParentComponent
+
+
+import React from 'react'
+
+function ChildComponent(props) {
+    return (
+        <div>
+            <button onClick={props.callParent}>Call parent</button>
+        </div>
+    )
+}
+
+export default ChildComponent
+```
