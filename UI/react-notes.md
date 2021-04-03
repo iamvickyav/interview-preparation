@@ -245,3 +245,105 @@ class StateChangeWelcome extends Component {
 
 export default StateChangeWelcome
 ```
+
+## Destructing Components
+
+```js
+import React from 'react';
+import NameComponent from './component/NameComponent'
+
+class App extends React.Component {
+  render() {
+    return (
+     <div>
+       <NameComponent firstName="Vicky" lastName="Arumugam"></NameComponent>
+     </div>
+    );
+  }
+}
+export default App;
+
+
+import React from 'react'
+
+const NameComponent = ({firstName, lastName}) => {
+    return (
+        <div>
+            <h1>{firstName}</h1>
+            <h1>{lastName}</h1>
+        </div>
+    )
+}
+export default NameComponent
+```
+
+```js
+import React from 'react';
+import NameComponent from './component/NameComponent'
+
+class App extends React.Component {
+  render() {
+    return (
+     <div>
+       <NameComponent firstName="Vicky" lastName="Arumugam"></NameComponent>
+     </div>
+    );
+  }
+}
+export default App;
+
+import React from 'react'
+
+const NameComponent = (props) => {
+    const {firstName, lastName} = props
+    return (
+        <div>
+            <h1>{firstName}</h1>
+            <h1>{lastName}</h1>
+        </div>
+    )
+}
+export default NameComponent
+```
+
+## Button Click in Functional & Class Components
+
+```js
+import React from 'react'
+
+function ClickFunction() {
+
+    function click() {
+        console.log("Click !!")
+    }
+
+    return (
+        <div>
+            <button onClick={click}>Click me</button>
+        </div>
+    )
+}
+
+export default ClickFunction
+```
+
+```js
+import React, { Component } from 'react'
+
+class ClickClassFunction extends Component {
+
+    click() {
+        console.log("helo")
+    }
+
+    render() {
+        return (
+            <div>
+                <button onClick={this.click}>Click me</button>
+            </div>
+        )
+    }
+}
+
+export default ClickClassFunction
+```
