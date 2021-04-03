@@ -347,3 +347,143 @@ class ClickClassFunction extends Component {
 
 export default ClickClassFunction
 ```
+
+## React Event Binding
+
+### Approach 1 - Binding in button
+
+```js
+import React, { Component } from 'react'
+
+class EventBinding extends Component {
+
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             msg : 'hello'
+        }
+    }
+
+    clickHandler() {
+        this.setState ({
+            msg : 'thank you'
+        })
+    }
+    
+    render() {
+        return (
+            <div>
+                {this.state.msg}
+                <button onClick={this.clickHandler.bind(this)}>Click</button>
+            </div>
+        )
+    }
+}
+
+export default EventBinding
+```
+
+### Bind using Arrow function
+
+```js
+import React, { Component } from 'react'
+
+class EventBinding extends Component {
+
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             msg : 'hello'
+        }
+    }
+
+    clickHandler() {
+        this.setState ({
+            msg : 'thank you'
+        })
+    }
+    
+    render() {
+        return (
+            <div>
+                {this.state.msg}
+                <button onClick={() => this.clickHandler()}>Click</button>
+            </div>
+        )
+    }
+}
+
+export default EventBinding
+```
+
+### Binding in constructor
+
+```js
+import React, { Component } from 'react'
+
+class EventBinding extends Component {
+
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             msg : 'hello'
+        }
+        this.clickHandler = this.clickHandler.bind(this)
+    }
+
+    clickHandler() {
+        this.setState ({
+            msg : 'thank you'
+        })
+    }
+    
+    render() {
+        return (
+            <div>
+                {this.state.msg}
+                <button onClick={this.clickHandler}>Click</button>
+            </div>
+        )
+    }
+}
+
+export default EventBinding
+```
+
+### Create Function with arrow button
+
+```js
+import React, { Component } from 'react'
+
+class EventBinding extends Component {
+
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             msg : 'hello'
+        }
+    }
+
+    clickHandler = () => {
+        this.setState ({
+            msg : 'thank you 2'
+        })
+    }
+    
+    render() {
+        return (
+            <div>
+                {this.state.msg}
+                <button onClick={this.clickHandler}>Click</button>
+            </div>
+        )
+    }
+}
+
+export default EventBinding
+```
+
