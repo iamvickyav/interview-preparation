@@ -532,3 +532,59 @@ function ChildComponent(props) {
 
 export default ChildComponent
 ```
+
+## List Component
+
+```js
+import React, { Component } from 'react'
+
+class ListComponent extends Component {
+
+    render() {
+        var names = ["Vicky", "Vijay", "Keerthu"];
+        var nameList = names.map(x => <h2>{x}</h2>)
+
+        return (
+            <div>
+               {nameList}
+            </div>
+        )
+    }
+}
+
+export default ListComponent
+```
+
+### List Rendering with multiple components
+
+```js
+import React, { Component } from 'react'
+import ListElement from './ListElement';
+
+class ListComponent extends Component {
+
+    render() {
+        var names = ["Vicky", "Vijay", "Keerthu"];
+        var nameList = names.map(x => <ListElement name={x}></ListElement>)
+
+        return (
+            <div>
+               {nameList}
+            </div>
+        )
+    }
+}
+
+export default ListComponent
+
+
+import React from 'react'
+
+export default function ListElement({name}) {
+    return (
+        <div>
+            <h2>{name}</h2>
+        </div>
+    )
+}
+```
