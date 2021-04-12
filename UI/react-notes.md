@@ -588,3 +588,57 @@ export default function ListElement({name}) {
     )
 }
 ```
+
+## React Forms
+
+```js
+import React, { Component } from 'react'
+
+class FormComponent extends Component {
+
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             username : '',
+             gender : 'male'
+        }
+    }
+
+    handleName = (event) => {
+        this.setState({
+            gender : event.target.value
+        })
+    }
+
+    setGender = (event) => {
+        this.setState({
+            gender : event.target.value
+        })
+    }
+
+    formSubmit = (event) => {
+        alert(`Gender set as ${this.state.gender}`)
+        event.preventDefault()
+    }
+    
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.formSubmit}>
+                <input type="text" value={this.state.gender} onChange={this.handleName}></input>
+                <select value={this.state.gender} onChange={this.setGender}>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <button type="submit">Submit</button>
+                </form>
+            </div>
+        )
+    }
+}
+
+export default FormComponent
+```
+
+
