@@ -149,7 +149,72 @@ console.log(youngPeopleArray); // Returns List with persons whose age is not 30
 
 ## Find
 
+* Return only one item which matches condition will be returned back
+* If No match, undefined
+* If many matches, the first match will be returned
+
+```javascript
+const people = [
+    { name: 'bob', age: 20, position: 'developer' },
+    { name: 'peter', age: 25, position: 'designer' },
+    { name: 'susy', age: 30, position: 'the boss' },
+    { name: 'anna', age: 35, position: 'intern' },
+];
+
+personBob = people.find(person => person.name == 'bob')
+console.log(personBob) // { name: 'bob', age: 20, position: 'developer' }
+
+personBob = people.find(person => person.age == 22)
+console.log(personBob) // undefined
+```
+
 ## Reduce
+
+* Always return the first param (aka accumlator) in callback function
+* Second Param for the reduce function is the init value
+
+```javascript
+const cart = [
+    {
+        title: 'Samsung Galaxy S7',
+        price: 599.99,
+        quantity: 1,
+    },
+    {
+        title: 'google pixel ',
+        price: 499.99,
+        quantity: 2,
+    },
+    {
+        title: 'Xiaomi Redmi Note 2',
+        price: 699.99,
+        quantity: 4,
+    },
+    {
+        title: 'Xiaomi Redmi Note 5',
+        price: 399.99,
+        quantity: 3,
+    },
+]
+
+const totalQuantity = cart.reduce((total, item) => {
+    total += item.quantity
+    return total
+}, 0)
+
+console.log(totalQuantity);
+
+const finalBill = cart.reduce((total, item) => {
+    total.quantity += item.quantity
+    total.price += item.quantity * item.price
+    return total
+}, {
+    quantity: 0,
+    price: 0
+})
+
+console.log(finalBill);
+```
 
 ### Reduce to Number
 
