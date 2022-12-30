@@ -214,9 +214,25 @@ const finalBill = cart.reduce((total, item) => {
 })
 
 console.log(finalBill);
+
+const url = 'https://api.github.com/users/iamvickyav/repos?per_page=100'
+
+const fetchRepos = async () => {
+    reposResp = await fetch(url)
+    repos = await reposResp.json()
+    console.log(repos)
+    finalResult = repos.reduce((result, repo) => {
+
+        const { language } = repo
+
+        if (language) {
+            result[language] = result[language] + 1 || 1
+        }
+
+        return result
+    }, {})
+    console.log(finalResult)
+}
+
+fetchRepos()
 ```
-
-### Reduce to Number
-
-### Reduce to Object
-
