@@ -1,5 +1,11 @@
 # Learn about Certificates
 
+**Certificates are all about machine identity**
+
+An X.509 certificate is a digital certificate that uses the widely accepted international X.509 public key infrastructure (PKI) standard to verify that a public key belongs to the user, computer or service identity contained within the certificate.
+
+**Against malicious network impersonators**
+
 With algorithms like RSA, we can do following things with private/public key
 
 * Encrypt
@@ -29,4 +35,3 @@ Lets Encrypt -> Free Open Source CA. Provides Certificate after authenticating p
 Provides Certificate & Private Key
 
 When you have control over both client & server, you can use self signed certs
-
