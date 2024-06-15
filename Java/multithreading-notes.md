@@ -10,6 +10,8 @@ Notes from Lecture - https://www.linkedin.com/learning/learning-java-threads/wha
 * Each thread gets its own private Stack - To store local variables, track methods calls
 * Default priority is 5
 
+> **Interesting Read** - Relationship between Java thread and OS threads. Whenever we create an object of type Thread, that object, among other things, contains the code that needs to execute and the start method. When we run that start method, we ask the OS to create and start a new OS thread belonging to our application's process, and ask the JVM to allocate a fixed-size stack space to store the thread's local variables from that point on. The OS is fully responsible for scheduling and running the thread on the CPU, just like any other thread. (Reference: https://dev.to/elayachiabdelmajid/java-21-virtual-threads-1h5b). Java thread maps to OS threads in one to one fashion
+
 ## Creating Thread
 
 * java.lang.Thread interface
