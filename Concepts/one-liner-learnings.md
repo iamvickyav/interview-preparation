@@ -6,7 +6,7 @@
 
 * Repository class in Spring Boot JPA is a concept from Domain Driven Design.
 
-* Domain Model - It encapsulates Domain Knowledge, Domain Rules, Processes, Constraints, Behaviour and State changes
+* Domain Model - It encapsulates Domain Knowledge, Domain Rules, Processes, Constraints, Behaviour and State changes. Domain model has to be pure and framework agnostic as possible
 
 * Building Blocks for Domain Model - Entities, Value Objects, Repositories, Aggregates, Factories, Domain Services
 
