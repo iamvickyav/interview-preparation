@@ -19,3 +19,9 @@ https://www.marcobehler.com/guides/a-guide-to-logging-in-java
 MySQL configuration
 
 https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
+
+MySQL In-Depth
+
+https://www.youtube.com/watch?v=_vxobA36UN4&ab_channel=MavenAnalytics
+https://www.youtube.com/watch?v=-u-kCJmJHCk&t=65s&ab_channel=MavenAnalytics
+https://www.youtube.com/watch?v=rIcB4zMYMas&ab_channel=MavenAnalytics
